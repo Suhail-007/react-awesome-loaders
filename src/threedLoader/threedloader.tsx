@@ -136,9 +136,10 @@ const ThreeDLoader = ({
     scene.add(new THREE.AmbientLight(colorAmbientLight));
 
     const speed = 0.024;
+    let animationFrameId = 0;
 
     const render = () => {
-      requestAnimationFrame(render);
+      animationFrameId = requestAnimationFrame(render);
 
       circle1.rotation.x -= speed;
       circle2Pivot.rotation.x -= speed;
@@ -148,6 +149,14 @@ const ThreeDLoader = ({
     };
 
     render();
+
+    return () => {
+      cancelAnimationFrame(animationFrameId);
+      shape.dispose();
+      material1.dispose();
+      material2.dispose();
+      renderer.dispose();
+    };
   }, [
     className,
     colorAmbientLight,

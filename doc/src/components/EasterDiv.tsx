@@ -1,8 +1,9 @@
+import type { ReactNode } from "react";
 import { useSpring, animated } from "@react-spring/web";
 import { useDrag } from "@use-gesture/react";
 
 interface EasterDivProps {
-  children: React.ReactNode;
+  children: ReactNode;
 }
 
 export function EasterDiv({ children }: EasterDivProps) {

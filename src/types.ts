@@ -12,15 +12,14 @@ export function resolveLoaderSize(
   isDesktopOrLaptop: boolean,
   isTabletOrMobile: boolean,
 ): number {
-  let sizeFound = 0;
   if (isDesktopOrLaptop) {
-    sizeFound =
-      desktopSize !== "" ? parseFloat(desktopSize) : parseFloat(size) * 2;
+    return desktopSize !== "" ? parseFloat(desktopSize) : parseFloat(size) * 2;
   }
   if (isTabletOrMobile) {
-    sizeFound = mobileSize !== "" ? parseFloat(mobileSize) : parseFloat(size);
+    return mobileSize !== "" ? parseFloat(mobileSize) : parseFloat(size);
   }
-  return sizeFound;
+  // SSR / no matchMedia: neither query matched — use the base size
+  return parseFloat(size);
 }
 
 export type { BoltLoaderProps } from "./boltLoader/boltloader";

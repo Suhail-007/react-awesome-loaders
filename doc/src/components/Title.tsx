@@ -1,8 +1,9 @@
+import type { ReactNode } from "react";
 import { useSpring, animated } from "@react-spring/web";
 import { useMove } from "@use-gesture/react";
 
 interface TitleProps {
-  children: React.ReactNode;
+  children: ReactNode;
 }
 
 export default function Title({ children }: TitleProps) {
